@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - 27017:27017
+    volumes:
+      - datamongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=oneforall
+      - MONGO_INITDB_DATABASE=test
+volumes:
+  datamongo:
