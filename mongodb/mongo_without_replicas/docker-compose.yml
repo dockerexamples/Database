@@ -6,9 +6,9 @@ services:
       - 27017:27017
     volumes:
       - datamongo:/data/db
+    env_file:
+      - ../../template.env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=oneforall
-      - MONGO_INITDB_DATABASE=test
+      - MONGO_PORT=27017
 volumes:
   datamongo:

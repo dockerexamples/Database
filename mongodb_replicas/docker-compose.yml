@@ -1,0 +1,53 @@
+services:
+  db0:
+    build:
+      context: db/
+    image: hao1915/mongodb:latest
+    command: [ "mongod", "--config", "/data/mongod.cfg", "--port", "27017" ]
+    container_name: db0
+    environment:
+      - MONGO_PORT=27017
+    env_file:
+      - db/template.env
+    ports:
+      - "27017:27017"
+    volumes:
+      - db0_data:/data/db
+
+  db1:
+    build:
+      context: db/
+    image: hao1915/mongodb:latest
+    command: [ "mongod", "--config", "/data/mongod.cfg", "--port", "27017" ]
+    container_name: db1
+    env_file:
+      - db/template.env
+    environment:
+      - MONGO_PORT=27017
+    volumes:
+      - db1_data:/data/db
+    ports:
+      - "27018:27017"
+
+  db2:
+    build:
+      context: db/
+    image: hao1915/mongodb:latest
+    command: [ "mongod", "--config", "/data/mongod.cfg", "--port", "27017" ]
+    container_name: db2
+    env_file:
+      - db/template.env
+    environment:
+      - MONGO_PORT=27017
+    volumes:
+      - db2_data:/data/db
+    ports:
+      - "27019:27017"
+
+volumes:
+  db0_data:
+    external: false
+  db1_data:
+    external: false
+  db2_data:
+    external: false
